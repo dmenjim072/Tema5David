@@ -41,12 +41,18 @@ public class ListaNumerosEjemplo {
         
         System.out.println("El 7 esta en la posicion " + posicion);//Dice la posicion desde el 0
         
-        //Para borrar el
+        //Para borrar la posicion numero 10
         Integer numero = 10;
         listaEnteros.remove(10);
         
+        //Para borrar el numero 10 de esta lista
+        listaEnteros.remove(10);
+       
+        
+        //Añadimos el 100 a la lista        
         listaEnteros.add(100);
         
+        //Mostramos toda la lista
         listaEnteros.forEach(System.out::println);
         
         System.out.println("-------------------");
