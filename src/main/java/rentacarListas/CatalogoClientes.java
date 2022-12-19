@@ -56,21 +56,16 @@ public class CatalogoClientes {
         //Creamos una variable para determinar la posicion
         int pos = buscarCliente(x);
         
-        //Recorremos el array para borrar el cliente seleccionado
-        for (int i = 0; i < listaClientes.length; i++) {
-            this.listaClientes[pos] = null;
-        }
+        //Recorremos la lista para borrar el cliente seleccionado        
+            this.lista.remove(pos);
+       
     }
         
     //Metodo para borrar todos los clientes
     public void borrarTodosClientes(){
         
-        for (int i = 0; i < listaClientes.length; i++) {
-            if(listaClientes[i] != null){
-                listaClientes[i] = null;
-                //Sin break
-            }
-        }
+        this.lista.clear();
+        
     }
     
     //Metodo para borrar todos los clientes
