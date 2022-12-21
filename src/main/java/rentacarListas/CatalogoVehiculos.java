@@ -21,8 +21,7 @@ public class CatalogoVehiculos {
     public CatalogoVehiculos(int tamaño){
         
         tamaño=Math.abs(tamaño);
-        
-        
+                
         this.lista = new ArrayList<>(tamaño);
         
         //Una vez creada la estructura de datos le doy valor a cada elemento(de forma aleatoria)
@@ -38,8 +37,10 @@ public class CatalogoVehiculos {
 //        }
 //        
 //    }
+        
     
     public boolean borrarVehiculo(Vehiculo v){
+        
         int pos = buscarVehiculo(v);
         
         if(pos >=0){
@@ -68,10 +69,12 @@ public class CatalogoVehiculos {
 
     //nº de vehiculos que hay en el catalogo(no el tamaño del array)
     public int getNumeroVehiculos() {
+        
         return this.lista.size();
     }
 
     public List<Vehiculo> getLista() {
+        
         return lista;
     }   
     

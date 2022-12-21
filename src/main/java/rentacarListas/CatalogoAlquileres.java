@@ -5,7 +5,9 @@
 package rentacarListas;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -13,92 +15,57 @@ import java.util.Arrays;
  */
 public class CatalogoAlquileres {
     
-    private int numeroAlquileres;
-    private Alquileres[] listaAlquileres;
-    
+    private List<Alquileres> lista;
+
     //Constructor dando tamaño
-    public CatalogoAlquileres(int tamaño) {
+    public CatalogoAlquileres(int tamaño){
         
         tamaño = Math.abs(tamaño);//Para pasarlo a positivo
         
-        this.numeroAlquileres = tamaño;
-        this.listaAlquileres = new Alquileres[10];
+        this.lista = new ArrayList<>(tamaño);
         
-        for (int i = 0; i < listaAlquileres.length; i++) {
-            this.listaAlquileres[i] = new Alquileres();
+        //Una vez creada la estructura de datos le doy valor a cada elemento(de forma aleatoria)
+        for (int i = 0; i < tamaño; i++) {
+            this.lista.add(new Alquileres());
         }
-    }
         
-    //Getters y Setters
-    public int getNumeroAlquileres() {
-        return numeroAlquileres;
-    }
-
-    public void setNumeroAlquileres(int numeroAlquileres) {
-        this.numeroAlquileres = numeroAlquileres;
-    }
-
-    public Alquileres[] getListaAlquileres() {
-        return listaAlquileres;
-    }
-
-    public void setListaAlquileres(Alquileres[] listaAlquileres) {
-        this.listaAlquileres = listaAlquileres;
-    }
-
-    @Override
-    public String toString() {
-        return "CatalogoAlquileres{" + "numeroAlquileres=" + numeroAlquileres + ", listaAlquileres=" + listaAlquileres + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.numeroAlquileres;
-        hash = 29 * hash + Arrays.deepHashCode(this.listaAlquileres);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final CatalogoAlquileres other = (CatalogoAlquileres) obj;
-        if (this.numeroAlquileres != other.numeroAlquileres) {
-            return false;
-        }
-        return Arrays.deepEquals(this.listaAlquileres, other.listaAlquileres);
-    }
+    }    
     
-    //Metodo para añadir alquileres al catalogo
-    public void añadirAlquileres(Alquileres x){
-        
-        //Si hay hueco se inserta en el hueco
-        if(this.numeroAlquileres<listaAlquileres.length){
-            
-            //Recorremos el array para añadirle clientes al catalogo
-            for (int i = 0; i < listaAlquileres.length; i++) {
-                
-                //Elejimos la posicion(la primera que este vacia)
-                if(this.listaAlquileres[i] == null){
-                    this.listaAlquileres[i] = x;
-                    this.numeroAlquileres++;
-                    System.out.println("Guardando alquiler en posicion: " + i);
-                    break;
+    //Metodo para buscar un cliente en concreto
+     private int buscarCliente(Alquileres a) {
+        //Búsqueda secuencial
+        if (a != null) {
+            for (int i = 0; i < this.lista.size(); i++) {
+                if (a.equals(this.lista.get(i))) {
+                    return i;
                 }
             }
-        }else{//Si no hay hueco creamos un array nuevo copiando el actual y añadiendo un hueco mas
-            this.listaAlquileres = Arrays.copyOf(listaAlquileres, ++numeroAlquileres);
         }
+        return -1;
+    }
+               
+    //Metodo para borrar vehiculo
+    public void borrarClienteSeleccionado(Alquileres a){
         
-    } 
+        //Creamos una variable para determinar la posicion
+        int pos = buscarCliente(a);
+        
+        //Recorremos la lista para borrar el cliente seleccionado        
+        this.lista.remove(pos);
+       
+    }
+        
+    //Metodo para borrar todos los clientes
+    public void borrarTodosAlquileres(){
+        
+        this.lista.clear();
+        
+    }
+    
+     public void añadirAlquileres(Alquileres a){
+        
+        this.lista.add(a);
+    }
     
 }
 

@@ -57,7 +57,7 @@ public class CatalogoClientes {
         int pos = buscarCliente(x);
         
         //Recorremos la lista para borrar el cliente seleccionado        
-            this.lista.remove(pos);
+        this.lista.remove(pos);
        
     }
         
@@ -68,17 +68,14 @@ public class CatalogoClientes {
         
     }
     
-    //Metodo para borrar todos los clientes
-    public void borrarPrimerCliente(){
+     public void añadirClientes(Clientes x){
         
-        for (int i = 0; i < listaClientes.length; i++) {
-            if(listaClientes[i] != null){
-                listaClientes[i] = null;
-                break; //Ponemos el break para que se pare despues de borrar el primero
-            }
-        }
+        this.lista.add(x);
     }
     
+   
+    
+     
     //Metodo para mostrar el catalogo
 //    public void mostrarCatalogo(CatalogoClientes c){
 //        
