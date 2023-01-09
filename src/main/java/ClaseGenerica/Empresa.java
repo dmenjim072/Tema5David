@@ -5,6 +5,7 @@
 package ClaseGenerica;
 
 
+import java.util.ArrayList;
 import rentacarListas.*;
 import java.util.Objects;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -128,15 +129,39 @@ public class Empresa {
         
     }
     
-    public void buscarClientes(String NIF){
+    public void buscarCliente(String NIF){
         
-        this.catalogo2.buscarElemento(NIF);
+        this.catalogo2.buscarCliente(NIF);
                
     }
     
     public void buscarVehiculo(String bastidor){
         
         this.catalogo3.buscarVehiculo(bastidor);
+        
+    }
+    
+    //Metodo para devolver los alquileres que tiene un cliente
+    public ArrayList devolverAlquileresDeCliente(String NIF){
+        
+        //Creamos una nueva lista de tipo alquileres
+        ArrayList<Alquileres> listaAlquileres = new ArrayList<>();
+        
+        String bastidor = "";
+        
+        //Recorremos la lista de vehiculos para ver si coincide un bastidor
+        //con la lista de alquileres
+        for (int i = 0; i < this.catalogo3.getLista().size(); i++) {
+            
+            if(this.catalogo1.equals(this.catalogo3.buscarVehiculo(bastidor))){
+                
+                listaAlquileres.add(catalogo1.getLista().get(i));
+                
+            }
+            
+        }
+        
+        return listaAlquileres;
         
     }
 

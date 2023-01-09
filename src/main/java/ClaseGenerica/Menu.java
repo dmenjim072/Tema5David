@@ -45,7 +45,7 @@ public class Menu {
                     
                     Clientes persona = new Clientes(nombre, NIF, apellido);
                     
-                    empresa.getCatalogo2().añadirClientes(persona);
+                    empresa.getCatalogo2().añadirElemento(persona);
                                         
                     JOptionPane.showMessageDialog(null,"El cliente ha sido registrado");
                     
@@ -53,13 +53,15 @@ public class Menu {
 
                 case "2"://Registrar coche
                     
-                    //Pedimos la el bastidor del vehiculo
+                    //Pedimos la matricula y el bastidor del vehiculo
                     String bastidor = JOptionPane.showInputDialog("Introduce el bastidor del vehiculo a registrar");
                     
-                    //Creamos un vehiculo nuevo con el bastidor seleccionado y lo añadimos al catalogo de vehiculos
-                    Vehiculo vehiculo = new Vehiculo(bastidor);
+                    String matricula = JOptionPane.showInputDialog("Introduce la matricula del vehiculo a registrar");
                     
-                    empresa.getCatalogo3().añadirVehiculo(vehiculo);
+                    //Creamos un vehiculo nuevo con la matricula y bastidor seleccionados y lo añadimos al catalogo de vehiculos
+                    Vehiculo vehiculo = new Vehiculo(matricula, bastidor);
+                    
+                    empresa.getCatalogo3().añadirElemento(vehiculo);
                     
                     JOptionPane.showMessageDialog(null, "El vehiculo ha sido registrado");
                     
@@ -85,9 +87,9 @@ public class Menu {
                     int numeroDias2 = Integer.parseInt(JOptionPane.showInputDialog("Introduce los dias que vas a usar el vehiculo"));
                     
                     //Creamos el alquiler y lo añadimos al catalogo
-                    Alquileres alquiler = new Alquileres(empresa.buscarClientes(NIF2), empresa.buscarVehiculo(bastidor2), LocalDate.now(), numeroDias2);
+                    Alquileres alquiler = new Alquileres(empresa.buscarCliente(NIF2), empresa.buscarVehiculo(bastidor2), LocalDate.now(), numeroDias2);
                     
-                    empresa.getCatalogo1().añadirAlquileres(alquiler);
+                    empresa.getCatalogo1().añadirElemento(alquiler);
                             
                     System.out.println("El alquiler del coche con bastidor: " + bastidor2 + " ha sido realizado");
                     break;              

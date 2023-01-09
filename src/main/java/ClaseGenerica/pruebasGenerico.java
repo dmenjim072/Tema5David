@@ -4,6 +4,7 @@
  */
 package ClaseGenerica;
 
+
 /**
  *
  * @author david
@@ -12,10 +13,47 @@ public class pruebasGenerico {
     
     public static void main(String[] args) {
         
-        Empresa e1 = new Empresa();
-        Vehiculo v1 = new Vehiculo("asdas", "de");
+        //Testing
         
-        e1.getCatalogo3().buscarVehiculo("asdasd");
+        
+        //CREAR
+        //Creamos empresa
+        Empresa e1 = new Empresa("asd", "asd");
+        
+        //Creamos vehiculos
+        Vehiculo v1 = new Vehiculo("DGJ3439", "0515162");
+        Vehiculo v2 = new Vehiculo("BRB4342", "0515162");
+        
+        //Creamos clientes
+        Clientes c1 = new Clientes("David", "1541516X", "Mena");
+        Clientes c2 = new Clientes("Pepe", "1541534X", "Navarro");
+        
+        
+        //AÑADIR
+        //Añadimos el vehiculo al catalogo de vehiculos
+        e1.registrarVehiculos(v1);
+        
+        //Añadimos el otro vehiculo al catalogo con otro metodo
+        e1.getCatalogo3().añadirElemento(v2);
+        
+        //Añadimos clientes a la lista
+        e1.getCatalogo2().añadirElemento(c1);
+        e1.getCatalogo2().añadirElemento(c2);
+        
+        
+        //MOSTRAR
+        //Mostramos todos los catalogos
+        System.out.println("Vehiculos: \n \n" + e1.getCatalogo3());
+        
+        System.out.println("---------------------- \n");
+        
+        System.out.println("Clientes: \n \n" + e1.getCatalogo2());
+        
+        
+        
+        //Intentamos devolver los alquileres realizados de un cliente
+        e1.devolverAlquileresDeCliente("1541516X");
+        
         
     }
     

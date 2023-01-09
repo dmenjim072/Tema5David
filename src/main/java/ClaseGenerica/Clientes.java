@@ -12,9 +12,9 @@ import rentacarListas.*;
  */
 public class Clientes {
     
-    String nombre;
-    String NIF;
-    String apellido;
+    private String nombre;
+    private String NIF;
+    private String apellido;
 
     //Constructor vacio
     public Clientes() {
@@ -55,7 +55,7 @@ public class Clientes {
 
     @Override
     public String toString() {
-        return "CatalogoClientes{" + "nombre=" + nombre + ", NIF=" + NIF + ", apellido=" + apellido + '}';
+        return "Cliente{" + "nombre=" + nombre + ", NIF=" + NIF + ", apellido=" + apellido + '}';
     }
             
 }
