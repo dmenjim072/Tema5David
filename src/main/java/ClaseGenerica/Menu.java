@@ -86,8 +86,8 @@ public class Menu {
                     //Creamos una variable para guardar el numero de dias que se utilizara el coche
                     int numeroDias2 = Integer.parseInt(JOptionPane.showInputDialog("Introduce los dias que vas a usar el vehiculo"));
                     
-                    //Creamos el alquiler y lo añadimos al catalogo
-                    Alquileres alquiler = new Alquileres(empresa.buscarCliente(NIF2), empresa.buscarVehiculo(bastidor2), LocalDate.now(), numeroDias2);
+                    //Creamos el alquiler y lo añadimos al catalogo con los datos que hemos pedido
+                    Alquileres alquiler = new Alquileres(empresa.getCatalogo2().buscarCliente(NIF2), empresa.getCatalogo3().buscarVehiculo(bastidor2), LocalDate.MIN, numeroDias2);
                     
                     empresa.getCatalogo1().añadirElemento(alquiler);
                             

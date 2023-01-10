@@ -10,8 +10,8 @@ package ClaseGenerica;
  */
 public class CatalogoAlquileres extends Catalogo<Alquileres> {
 
-    public CatalogoAlquileres(int tamaño) {
-        super(tamaño);
+    public CatalogoAlquileres(int tamanio) {
+        super(tamanio);
     }
     
     //Metodo para buscar un alquiler por su ID
@@ -23,5 +23,8 @@ public class CatalogoAlquileres extends Catalogo<Alquileres> {
         
         return (posicion >= 0) ? this.lista.get(posicion) : null;
     }
+    
+       
+            
     
 }

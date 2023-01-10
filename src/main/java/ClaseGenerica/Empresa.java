@@ -29,9 +29,9 @@ public class Empresa {
     public Empresa(String CIF, String nombre) {
         this.CIF = RandomStringUtils.randomAlphabetic(1) + RandomStringUtils.randomAlphanumeric(7) + RandomStringUtils.randomAlphabetic(1);
         this.nombre = RandomStringUtils.randomAlphabetic(6);
-        this.catalogo1 =  new CatalogoAlquileres(10);
-        this.catalogo2 = new CatalogoClientes(10);
-        this.catalogo3 = new CatalogoVehiculos(10);
+        this.catalogo1 =  new CatalogoAlquileres(0);
+        this.catalogo2 = new CatalogoClientes(0);
+        this.catalogo3 = new CatalogoVehiculos(0);
     }
 
     public String getCIF() {
@@ -117,27 +117,45 @@ public class Empresa {
         return Objects.equals(this.catalogo3, other.catalogo3);
     }
 
+    //Metodo para registrar clientes
     public void registrarClientes(Clientes x){
         
         this.catalogo2.añadirElemento(x);
         
     }
     
+    //Metodo para registrar vehiculos
     public void registrarVehiculos(Vehiculo v){
         
         this.catalogo3.añadirElemento(v);
         
     }
     
+    //Metodo para registrar alquileres
+    public void registrarAlquiler(Alquileres a) {
+        
+        this.catalogo1.añadirElemento(a);
+    
+    }
+    
+    //Metodo para buscar clientes
     public void buscarCliente(String NIF){
         
         this.catalogo2.buscarCliente(NIF);
                
     }
     
+    //Metodo para buscar vehiculos
     public void buscarVehiculo(String bastidor){
         
         this.catalogo3.buscarVehiculo(bastidor);
+        
+    }
+    
+    //Metodo para buscar vehiculos
+    public void buscarAlquiler(String bastidor, String NIF){
+        
+        this.catalogo1.buscarAlquiler(0);
         
     }
     
@@ -149,12 +167,14 @@ public class Empresa {
         
         String bastidor = "";
         
-        //Recorremos la lista de vehiculos para ver si coincide un bastidor
-        //con la lista de alquileres
+        //Recorremos la lista de vehiculos 
         for (int i = 0; i < this.catalogo3.getLista().size(); i++) {
-            
+                    
+            //Hacemos un if para ver si coincide un bastidor del catalogo alquileres
+            //con el de vehiculos
             if(this.catalogo1.equals(this.catalogo3.buscarVehiculo(bastidor))){
                 
+                //Si coincide añadimos la lista con el alquiler que coincide
                 listaAlquileres.add(catalogo1.getLista().get(i));
                 
             }
@@ -164,5 +184,7 @@ public class Empresa {
         return listaAlquileres;
         
     }
+    
+    
 
 }

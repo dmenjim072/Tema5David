@@ -75,18 +75,16 @@ public class Catalogo<T> {
         String tmp = "";
         
         for (T objeto : this.lista){
-            
-                           
+                                      
                 tmp += objeto.toString() + "\n";
-                
-           
+                           
         }
         return tmp;
     }        
     
 }
 
-    //ACABAR    
+    
     
 
     

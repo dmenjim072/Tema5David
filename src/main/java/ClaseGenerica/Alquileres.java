@@ -30,9 +30,9 @@ public class Alquileres {
         this.numeroDias = numeroDias;
     }
 
-    public Alquileres() {
+    public Alquileres() {       
+        this.alquilerID = contador;//Le ponemos un contador para que vaya sumandose 1 por cada alquiler
         contador++;
-        this.alquilerID = contador;
         this.cliente = new Clientes();
         this.vehiculo = new Vehiculo();
         this.fechaInicio = LocalDate.now(); 
@@ -110,6 +110,11 @@ public class Alquileres {
         }
         final Alquileres other = (Alquileres) obj;
         return this.alquilerID == other.alquilerID;
+    }
+
+    @Override
+    public String toString() {
+        return "Alquiler{" + "alquilerID=" + alquilerID + ", cliente=" + cliente + ", vehiculo=" + vehiculo + ", fechaInicio=" + fechaInicio + ", numeroDias=" + numeroDias + '}';
     }
     
     
