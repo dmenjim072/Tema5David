@@ -5,6 +5,7 @@
 package ClaseGenerica;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import rentacarListas.*;
 import java.util.Objects;
@@ -224,8 +225,8 @@ public class Empresa {
     
     //Metodo para borrar un cliente del catalogo si no tiene alquileres guardados
     public void borrarClienteSinAlquileres(Clientes c){
-        
-        if(this.catalogo2.getLista().contains(this.catalogo1.getLista().contains(c))){
+
+        if(this.catalogo2.getLista().contains(this.catalogo1.getLista())){
             
             this.catalogo2.getLista().remove(c);
             
@@ -233,6 +234,42 @@ public class Empresa {
         
     }
     
+    //Metodo para borrar un vehiculo del catalogo si no tiene alquileres guardados
+    public void borrarVehiculoSinAlquileres(Vehiculo v){
+
+        if(this.catalogo3.getLista().contains(this.catalogo1.getLista())){
+            
+            this.catalogo3.getLista().remove(v);
+            
+        }
+        
+    }
+    
+    //Metodo para obtener vehiculos que deben ser devueltos en una fecha
+    public ArrayList devolucionVehiculos(LocalDate fecha){
+        
+        //Creamos una nueva lista donde guardaremos los vehiculos
+         ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
+        
+        //Recorremos el catalogo alquileres
+        for (int i = 0; i < this.catalogo1.getLista().size(); i++) {
+            
+        //Creamos un objeto alquiler 
+        Alquileres alquiler = new Alquileres();
+            
+            //le sumo los dias a la fecha y el resultado lo comparo con la fecha dada para ver su si son iguales
+            if(alquiler.getFechaInicio().plusDays(alquiler.getNumeroDias()).equals(fecha)) {
+                
+                //Si son iguales las fechas las añado a la lista creada
+                listaVehiculos.add(alquiler.getVehiculo()); 
+                
+            }
+            
+        }
+        
+        return listaVehiculos;
+    }
+         
     
 
 }

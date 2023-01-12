@@ -31,8 +31,8 @@ public class pruebasGenerico {
         Clientes c2 = new Clientes("Pepe", "1541534X", "Navarro");
         
         //Creamos un alquiler (cliente y vehiculo)
-        Alquileres a1 = new Alquileres(c1, v1, LocalDate.now(), 7);
-        Alquileres a2 = new Alquileres(c2, v2, LocalDate.now(), 4);
+        Alquileres a1 = new Alquileres(c1, v1, LocalDate.now(), 0);
+        Alquileres a2 = new Alquileres(c2, v2, LocalDate.now(), 1);
         
         //AÑADIR
         //Añadimos el vehiculo al catalogo de vehiculos
@@ -74,6 +74,10 @@ public class pruebasGenerico {
         e1.borrarClienteSinAlquileres(c1);
         
         System.out.println("Clientes despues de borrar: \n" + e1.getCatalogo2());
+        
+        //Mostramos la lista de vehiculos que se tienen que devolver en X fecha        
+        System.out.println("Los vehiculos que se tienen que devolver " + LocalDate.now()
+        + " son " + e1.devolucionVehiculos(LocalDate.now()));
     }
     
 }
