@@ -8,6 +8,7 @@ package ClaseGenerica;
 import java.util.ArrayList;
 import rentacarListas.*;
 import java.util.Objects;
+import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
 
 /**
@@ -160,28 +161,75 @@ public class Empresa {
     }
     
     //Metodo para devolver los alquileres que tiene un cliente
-    public ArrayList devolverAlquileresDeCliente(String NIF){
+    public ArrayList devolverAlquileresDeCliente(){
         
         //Creamos una nueva lista de tipo alquileres
         ArrayList<Alquileres> listaAlquileres = new ArrayList<>();
         
-        String bastidor = "";
-        
-        //Recorremos la lista de vehiculos 
-        for (int i = 0; i < this.catalogo3.getLista().size(); i++) {
-                    
-            //Hacemos un if para ver si coincide un bastidor del catalogo alquileres
-            //con el de vehiculos
-            if(this.catalogo1.equals(this.catalogo3.buscarVehiculo(bastidor))){
-                
-                //Si coincide añadimos la lista con el alquiler que coincide
+        //Declaramos las variables que vamos a utilizar                        
+        String NIF = JOptionPane.showInputDialog("Introduce el NIF del cliente para buscar sus alquileres disponibles");
+
+        //Recorremos la lista para ver si hay algun bastidor igual en la lista1 y 3
+        for (int i = 0; i < this.catalogo1.getLista().size(); i++) {
+                   
+            if (this.catalogo1.getLista().equals(this.catalogo3.buscarVehiculo(NIF))){
+            
                 listaAlquileres.add(catalogo1.getLista().get(i));
-                
+                                                                    
+            }
+                   
+        }
+        
+        JOptionPane.showMessageDialog(null, "Los alquileres del cliente " + NIF + " son: " + listaAlquileres);
+        
+        return listaAlquileres;
+        
+    }
+    
+    //Metodo para devolver los alquileres que tiene un bastidor
+    public ArrayList devolverAlquileresDeBastidor(){
+        
+        //Creamos una nueva lista de tipo alquileres
+        ArrayList<Alquileres> listaAlquileres = new ArrayList<>();
+        
+        //Declaramos las variables que vamos a utilizar
+        String NIF = "";
+                        
+        String bastidor = JOptionPane.showInputDialog("Introduce el bastidor del vehiculo para buscar sus alquileres disponibles");
+
+        //Recorremos la lista para ver si hay algun bastidor igual en la lista1 y 3
+        for (int i = 0; i < this.catalogo1.getLista().size(); i++) {
+                   
+            if (this.catalogo1.getLista().equals(this.catalogo3.buscarVehiculo(bastidor))){
+            
+                //Añadimos a la lista nueva la posicion de la lista que coincida
+                listaAlquileres.add(catalogo1.getLista().get(i));
+                                        
             }
             
+            JOptionPane.showMessageDialog(null, "Los alquileres del cliente " + NIF + " son: " + listaAlquileres);
+        
         }
         
         return listaAlquileres;
+        
+    }
+    
+    //Metodo para borrar un alquiler por ID
+    public void borrarAlquiler(int alquilerID){
+        
+        this.catalogo1.getLista().remove(alquilerID);
+        
+    }
+    
+    //Metodo para borrar un cliente del catalogo si no tiene alquileres guardados
+    public void borrarClienteSinAlquileres(Clientes c){
+        
+        if(this.catalogo2.getLista().contains(this.catalogo1.getLista().contains(c))){
+            
+            this.catalogo2.getLista().remove(c);
+            
+        }
         
     }
     

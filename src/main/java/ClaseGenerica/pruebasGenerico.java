@@ -61,12 +61,19 @@ public class pruebasGenerico {
         
         System.out.println("Alquileres: \n \n" + e1.getCatalogo1());
         
-        
-        
+                
         //Intentamos devolver los alquileres realizados de un cliente
-        e1.devolverAlquileresDeCliente("1541516X");
+        //e1.devolverAlquileresDeCliente();
+                
+        //Borramos un alquiler por su ID y comprobamos la lista nuevamente
+        e1.borrarAlquiler(0);
         
-        System.out.println(e1.devolverAlquileresDeCliente("1541516X"));
+        System.out.println("Alquileres: " + e1.getCatalogo1());
+        
+        //Borramos un cliente(si no tiene alquileres) y comprobamos lista nuevamente
+        e1.borrarClienteSinAlquileres(c1);
+        
+        System.out.println("Clientes despues de borrar: \n" + e1.getCatalogo2());
     }
     
 }

@@ -19,11 +19,11 @@ public class Catalogo<T> {
     
     //El constructor recibe el tamaño del catalogo e inicializa la estructura
     //de datos con vehiculos aleatorios
-    public Catalogo(int tamaño){
+    public Catalogo(int tamanio){
         
-        tamaño=Math.abs(tamaño);
+        tamanio=Math.abs(tamanio);
                 
-        this.lista = new ArrayList<>(tamaño);
+        this.lista = new ArrayList<>(tamanio);
         
         //lista size() es 0
                

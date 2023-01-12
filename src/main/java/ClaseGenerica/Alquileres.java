@@ -30,7 +30,7 @@ public class Alquileres {
         this.numeroDias = numeroDias;
     }
 
-    public Alquileres() {       
+    public Alquileres() {           
         this.alquilerID = contador;//Le ponemos un contador para que vaya sumandose 1 por cada alquiler
         contador++;
         this.cliente = new Clientes();
