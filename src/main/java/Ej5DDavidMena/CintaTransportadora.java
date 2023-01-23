@@ -60,6 +60,8 @@ public class CintaTransportadora {
     public String toString() {
         return "CintaTransportadora{" + "cintaTransportadora=" + listaProductos + '}';
     }
+    
+    
         
     //Metodo para añadir producto a la cinta
     public void añadirProducto(Productos ejemplo){
@@ -86,6 +88,7 @@ public class CintaTransportadora {
     public String mostrarProductos(){
         
         String listaProductos1 = "";
+        
         for (int i = 0; i < this.listaProductos.size(); i++) {
             listaProductos1 += this.listaProductos.get(i).toString() + "\n";
         }
@@ -93,13 +96,18 @@ public class CintaTransportadora {
         return listaProductos1;
     }
     
-    //Metodo para genere la parte del IVA del ticket
+    //Metodo para que genere la parte del IVA del ticket
     public String mostrarProductosIva() {
         
         String formatoIVA = "";
         
+        //Hacemos un bucle para recorrer la lista de productos
         for (int i = 0; i < this.listaProductos.size(); i++) {
+            
+            //Hacemos un switch para diferenciar el IVA que tengan
             switch (this.listaProductos.get(i).getIVA()) {
+                
+                //Hacemos los calculos segun el tipo de IVA
                 case 4: {
                     numeroProdutosIVA4 += this.listaProductos.get(i).getCantidad();
                     totalSinIVA4 += this.listaProductos.get(i).precioTotalSinIva();
@@ -120,10 +128,11 @@ public class CintaTransportadora {
 
             }
             
+            //Le damos formato con un textblock para generar esta parte
             formatoIVA= """
-                        Nº prod. iva 4%%:   %d    Precio sin IVA: %.2f       Precio con IVA: %.2f  
-                        Nº prod. iva 10%%:  %d    Precio sin IVA: %.2f       Precio con IVA: %.2f  
-                        Nº prod. iva 21%%:  %d    Precio sin IVA: %.2f       Precio con IVA: %.2f  
+                        Nº prod. IVA 4%%:   %d    Precio sin IVA: %.2f       Precio con IVA: %.2f  
+                        Nº prod. IVA 10%%:  %d    Precio sin IVA: %.2f       Precio con IVA: %.2f  
+                        Nº prod. IVA 21%%:  %d    Precio sin IVA: %.2f       Precio con IVA: %.2f  
                         """.formatted(numeroProdutosIVA4,totalSinIVA4,totalIVA4,
                                  numeroProdutosIVA10,totalSinIVA10,totalIVA10,
                                  numeroProdutosIVA21,totalSinIVA21,totalIVA21);
