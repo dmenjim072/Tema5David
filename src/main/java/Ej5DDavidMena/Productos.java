@@ -14,7 +14,7 @@ public class Productos {
     private double precio;
     private int cantidad;
     private int IVA;
-    private double precioSinIVA;
+    private double precioSinIVA = precio / (IVA/100 + 1);
 
     public Productos(String nombre, double precio, int cantidad, int IVA) {
         this.nombre = nombre;
