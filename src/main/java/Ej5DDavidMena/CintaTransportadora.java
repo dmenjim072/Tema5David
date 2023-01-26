@@ -112,11 +112,13 @@ public class CintaTransportadora {
                     numeroProdutosIVA4 += this.listaProductos.get(i).getCantidad();
                     totalSinIVA4 += this.listaProductos.get(i).precioTotalSinIva();
                     totalIVA4 += this.listaProductos.get(i).precioTotalConIva();
+                    break;
                 }
                 case 10: {
                     numeroProdutosIVA10 += this.listaProductos.get(i).getCantidad();
                     totalSinIVA10 += this.listaProductos.get(i).precioTotalSinIva();
                     totalIVA10 += this.listaProductos.get(i).precioTotalConIva();
+                    break;
                 }
                 case 21: {
                     numeroProdutosIVA21 += this.listaProductos.get(i).getCantidad();

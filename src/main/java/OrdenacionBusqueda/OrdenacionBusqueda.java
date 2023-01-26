@@ -42,7 +42,57 @@ public class OrdenacionBusqueda {
         
         Collections.sort(paises, criterioPoblacion.reversed());//Para que lo ordene al reves
         
+        //Ordena la lista por superficie y si hay resultados con el mismo numero entonces ordena por nombre
+        Collections.sort(paises, criterioSuperficie.thenComparing(criterioNombre));
+        
         paises.forEach(System.out::println);
+        
+        //Ordena la lista por superficie y luego por poblacion
+        Collections.sort(paises, criterioSuperficie);
+        Collections.sort(paises, criterioPoblacion);
+        
+        
+        
+        //Busqueda por orden natural (por nombre)
+        //la lista donde buscar la informacion debe estar ordenada previamente 
+        //segun el criterio de orden natural (nombre)--> Comparable en Pais
+        Collections.sort(paises);
+        
+        System.out.println("-------------------- Busqueda binaria-------------------");
+        System.out.println("Lista ordenada segun orden natural (nombre) -------------");
+        paises.forEach(System.out::println);
+        
+        Pais objetoBuscar = new Pais();
+        
+        objetoBuscar.setNombre("eeuu"); //Lista ordenada por nombre, buscada por nombre, la key es nombre
+        
+        int posicion = Collections.binarySearch(paises, objetoBuscar);
+        
+        System.out.println("Portugal esta en la posicion " + posicion);
+        
+        //Si intento buscar en la lista con un valor que no es Nombre se obtendra una 
+        //posicion erronea
+        objetoBuscar.setNombre("");
+        objetoBuscar.setPoblacion(23);
+        
+        posicion = Collections.binarySearch(paises, objetoBuscar);
+        System.out.println(posicion);
+        //Si ordeno la lista por un criterio y busco por otro, el resultado es inesperado 
+        
+        
+        System.out.println("-------------Ordenacion y busqueda por poblacion---------");
+        
+        //Antes de usar binarySearch por poblacion la lista debe estar ordenada por poblacion
+        Collections.sort(paises, criterioPoblacion);
+        
+        paises.forEach(System.out::println);
+        
+        objetoBuscar = new Pais();
+        objetoBuscar.setPoblacion(146);
+        
+        posicion = Collections.binarySearch(paises, objetoBuscar, criterioPoblacion);
+        
+        System.out.println("El pais que tiene 146 millones es " + paises.get(posicion));
     }
     
 }

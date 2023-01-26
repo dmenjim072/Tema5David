@@ -17,6 +17,9 @@ public class Pais implements Comparable<Pais> {
     private long superficie; //km2
     private String moneda;
 
+    public Pais() {
+    }
+    
     public Pais(String nombre, long poblacion, long superficie, String moneda) {
         this.nombre = nombre;
         this.poblacion = poblacion;
